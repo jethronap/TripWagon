@@ -5,6 +5,13 @@
 
 jQuery( function init($) {
 
-    console.log("hi there!");
-
+    let options = {
+        url: "../data.json",
+        success: jsonHandler
+    }
+    function jsonHandler (data) {
+        console.log(data);
+        
+    }
+    $.ajax(options)
 });
