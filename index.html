@@ -27,9 +27,19 @@
             <div class="col">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text bg-white border-0"><i class="fas fa-search text-black-50"></i></span>
+                        <span class="input-group-text bg-white border-0"><i
+                                class="fas fa-search text-black-50"></i></span>
                     </div>
-                    <input type="text" class="form-control border-0 shadow-none" aria-label="Location">
+
+                    <!--DataList Example-->
+                    <input list="cities-list" id="cities-list-choice" class="form-control border-0 shadow-none"
+                        aria-label="Location">
+                    <datalist id="cities-list">
+                        <option value="Paris"></option>
+                        <option value="Toulouse"></option>
+                        <option value="Marseille"></option>
+                    </datalist>
+
                     <div class="input-group-append">
                         <span class="input-group-text bg-info text-white px-5 border-0">SUCHEN</span>
                     </div>
