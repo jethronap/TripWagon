@@ -10,30 +10,27 @@ jQuery(function init($) {
     success: jsonHandler
   }
 
+  function removeDups(names) {
+    let unique = {};
+    names.forEach(function (i) {
+      if (!unique[i]) {
+        unique[i] = true;
+      }
+    });
+    return Object.keys(unique);
+  }
+
+
   function jsonHandler(data) {
     let entries = data[1].entries
     let cities = entries.map(getCity);
 
     function getCity(hotel) {
-
       return hotel.city;
       //let uniq = [ ...new Set(hotel.city) ];
-
     }
-
-    function removeDups(names) {
-      let unique = {};
-      names.forEach(function (i) {
-        if (!unique[i]) {
-          unique[i] = true;
-        }
-      });
-      return Object.keys(unique);
-    }
-
     let uniqueCity = removeDups(cities);
     console.log(uniqueCity);
-
   }
   $.ajax(options)
 });
