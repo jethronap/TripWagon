@@ -22,19 +22,37 @@ jQuery(function init($) {
   }
   */
 
+  function addOptions( listOfCities ) {
+    // 1) Get DataList:
+    let datalist = document.querySelector('#cities-list');
+    // 2) Loop Over unique cities array:
+    listOfCities.map( addOptionTag );
+    
+    function addOptionTag ( city ) {
+      datalist.innerHTML += `<option value ="${city}"></option>`;
+    }
+    // 2.1) Inside Loop:
+        // - Create option element
+        // - Add city value
+        // - Add to datalist (innerHTML)
+
+  }
+
   function jsonHandler(data) {
     let entries = data[1].entries
     // map array method which for every array element executes the callback: getCity:
     let cities = entries.map(getCity);
 
     function getCity(hotel) {
-      return hotel.city;
-      
+      return hotel.city; 
     }
-    // use instead of removeDups (there is a problem with IE but it's ok!):
-    let uniqueCity = [ ...new Set(cities) ];
+
     //let uniqueCity = removeDups(cities);
-    console.log(uniqueCity);
+    // use instead of removeDups (there is a problem with IE but it's ok!):
+    let uniqueCities = [ ...new Set(cities) ];
+    
+    console.log(uniqueCities);
+    addOptions(uniqueCities);
   }
   $.ajax(options)
 });
