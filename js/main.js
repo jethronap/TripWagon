@@ -10,6 +10,7 @@ jQuery(function init($) {
     success: jsonHandler
   }
 
+  /*
   function removeDups(names) {
     let unique = {};
     names.forEach(function (i) {
@@ -19,17 +20,20 @@ jQuery(function init($) {
     });
     return Object.keys(unique);
   }
-
+  */
 
   function jsonHandler(data) {
     let entries = data[1].entries
+    // map array method which for every array element executes the callback: getCity:
     let cities = entries.map(getCity);
 
     function getCity(hotel) {
       return hotel.city;
-      //let uniq = [ ...new Set(hotel.city) ];
+      
     }
-    let uniqueCity = removeDups(cities);
+    // use instead of removeDups (there is a problem with IE but it's ok!):
+    let uniqueCity = [ ...new Set(cities) ];
+    //let uniqueCity = removeDups(cities);
     console.log(uniqueCity);
   }
   $.ajax(options)
