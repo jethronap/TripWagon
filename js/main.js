@@ -5,18 +5,35 @@
 
 jQuery(function init($) {
 
-    let options = {
-        url: "../data.json",
-        success: jsonHandler
-    }
-    function jsonHandler(data) {
-        document.querySelector('#cities-list').innerHTML =
-            `
-        <option value="${data[1].entries[0].city}"></option>
-        <option value="${data[1].entries[1].city}"></option>
-        <option value="${data[1].entries[2].city}"></option>
-        `
+  let options = {
+    url: "../data.json",
+    success: jsonHandler
+  }
+
+  function jsonHandler(data) {
+    let entries = data[1].entries
+    let cities = entries.map(getCity);
+
+    function getCity(hotel) {
+
+      return hotel.city;
+      //let uniq = [ ...new Set(hotel.city) ];
 
     }
-    $.ajax(options)
+
+    function removeDups(names) {
+      let unique = {};
+      names.forEach(function (i) {
+        if (!unique[i]) {
+          unique[i] = true;
+        }
+      });
+      return Object.keys(unique);
+    }
+
+    let uniqueCity = removeDups(cities);
+    console.log(uniqueCity);
+
+  }
+  $.ajax(options)
 });
