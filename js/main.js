@@ -50,6 +50,8 @@ jQuery(function init($) {
     //let uniqueCity = removeDups(cities);
     // use instead of removeDups (there is a problem with IE but it's ok!):
     let uniqueCities = [ ...new Set(cities) ];
+    // alphabetically ordered the array: (keep in mind that it changes the array)
+    uniqueCities.sort();
     
     console.log(uniqueCities);
     addOptions(uniqueCities);
