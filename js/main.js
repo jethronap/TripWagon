@@ -9,7 +9,7 @@ jQuery(function init($) {
     url: "../data.json",
     success: jsonHandler
   }
-
+  let entries; // we define it here so it can be used from other methods
   /*
   function removeDups(names) {
     let unique = {};
@@ -39,7 +39,7 @@ jQuery(function init($) {
   }
 
   function jsonHandler(data) {
-    let entries = data[1].entries
+    entries = data[1].entries
     // map array method which for every array element executes the callback: getCity:
     let cities = entries.map(getCity);
 
@@ -61,12 +61,21 @@ jQuery(function init($) {
   let citiesInput = document.querySelector("#cities-list-choice");
   citiesInput.addEventListener("keydown", handleCityInput);
 
+
+  function getCityFromSelection(selectedCity) {
+    let result = entries.filter(entry => entry.city.toLowerCase().trim() === selectedCity.toLowerCase().trim());
+    console.log(result);
+    
+  }
+
   function handleCityInput(e) {
     if (e.keyCode === 13) {
       console.log("get hotels from city");
       //get city value:
       let selectedCity = this.value; // === citiesInput.value === e.target
-
+      selectedCity.toLowerCase().trim();
+      getCityFromSelection(selectedCity);
+      
     }
 
   }
