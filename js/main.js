@@ -11,6 +11,10 @@ jQuery(function init($) {
   }
   let entries; // we define it here so it can be used from other methods
   let selectedCity;
+  // handle city input:
+  let citiesInput = document.querySelector("#cities-list-choice");
+  citiesInput.addEventListener("keydown", handleCityInput);
+
   /*
   function removeDups(names) {
     let unique = {};
@@ -53,33 +57,57 @@ jQuery(function init($) {
     let uniqueCities = [...new Set(cities)];
     // alphabetically ordered the array: (keep in mind that it changes the array)
     uniqueCities.sort();
-    
+
     addOptions(uniqueCities);
 
   }
 
-  // handle city input:
-  let citiesInput = document.querySelector("#cities-list-choice");
-  citiesInput.addEventListener("keydown", handleCityInput);
-
-
   function getCityFromSelection(selectedCity) {
     let hotel = entries.filter(entry => entry.city.toLowerCase() === selectedCity.toLowerCase().trim());
-    console.log(hotel);
-
+    return hotel;
   }
 
-  function handleCityInput(e) {
-    if (e.keyCode === 13) {
+  function displaySelectedHotels(foundHotels) {
+
+    // empty the hotel sections:
+    let hotelsSection = document.querySelector(".hotels");
+    hotelsSection.innerHTML = "";
+
+    //1. Loop found Hotels' list:
+    foundHotels.map(displayHotel);
+
+
+    function displayHotel(hotel) {
+      //1.1 For every hotel obj -> get Template -> clone -> update content -> append to hotels
+      let template = document.querySelector('#template');
+      // made a clone of the template
+      let clone = template.cloneNode(true);
+      let img = clone.querySelector(".hotel-photo");
+      // change the attributtes of the template:
+      img.setAttribute("src", hotel.thumbnail);
       
-      //get city value:
-      selectedCity = this.value; // === citiesInput.value === e.target
-      selectedCity.toLowerCase().trim();
-      getCityFromSelection(selectedCity);
+      // removed the hidden class from the clone:
+      clone.classList.remove("hidden");
+      hotelsSection.appendChild(clone);
 
     }
 
   }
 
+  function handleCityInput(e) {
+    if (e.keyCode === 13) {
+
+      //get city value:
+      selectedCity = this.value; // === citiesInput.value === e.target
+      selectedCity.toLowerCase().trim();
+      // display hotels using getCityFromSelection
+      let foundHotels = getCityFromSelection(selectedCity);
+      displaySelectedHotels(foundHotels);
+
+    }
+
+  }
+
+  // get hotel data:
   $.ajax(options)
 });
