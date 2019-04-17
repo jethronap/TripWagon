@@ -10,6 +10,7 @@ jQuery(function init($) {
     success: jsonHandler
   }
   let entries; // we define it here so it can be used from other methods
+  let selectedCity;
   /*
   function removeDups(names) {
     let unique = {};
@@ -52,7 +53,7 @@ jQuery(function init($) {
     let uniqueCities = [...new Set(cities)];
     // alphabetically ordered the array: (keep in mind that it changes the array)
     uniqueCities.sort();
-    console.log(uniqueCities);
+    
     addOptions(uniqueCities);
 
   }
@@ -63,19 +64,19 @@ jQuery(function init($) {
 
 
   function getCityFromSelection(selectedCity) {
-    let result = entries.filter(entry => entry.city.toLowerCase().trim() === selectedCity.toLowerCase().trim());
-    console.log(result);
-    
+    let hotel = entries.filter(entry => entry.city.toLowerCase() === selectedCity.toLowerCase().trim());
+    console.log(hotel);
+
   }
 
   function handleCityInput(e) {
     if (e.keyCode === 13) {
-      console.log("get hotels from city");
+      
       //get city value:
-      let selectedCity = this.value; // === citiesInput.value === e.target
+      selectedCity = this.value; // === citiesInput.value === e.target
       selectedCity.toLowerCase().trim();
       getCityFromSelection(selectedCity);
-      
+
     }
 
   }

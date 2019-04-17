@@ -1,3 +1,7 @@
 .searchbar {
     background-color: #34464f;
 }
+
+.hotel-photo {
+    min-height: 100%;
+}
