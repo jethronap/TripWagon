@@ -8,8 +8,6 @@
     <!--JQuery-->
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-    <!--Range Slider-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.min.js"></script>
     <!--BootStrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,8 +17,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <!-- Bootstrap Slider
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.min.js"></script> -->
     <!--OpenLayers: go to quickstart-->
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <!--Font Awesome-->
@@ -75,9 +71,9 @@
 
         <!-- FEATURES -->
         <section class="row features border rounded">
-            <div class="col-4 border range-slider">Price: 
-                <input class="range-slider__range" type="range" value="600" min="500" max="2000">
-                <span class="range-slider__value">0</span>
+            <div class="col-4 border">Price: 
+                <input id="slider" type="range" value="600" min="500" max="2000">
+                <span id="rangeres">0</span>
             </div>
             <div class="col-2 border">PropType</div>
             <div class="col-2 border">Guest</div>

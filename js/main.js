@@ -11,13 +11,16 @@ jQuery(function init($) {
   }
   let entries; // we define it here so it can be used from other methods
   let selectedCity;
+  
   // handle city input:
   let citiesInput = document.querySelector("#cities-list-choice");
   citiesInput.addEventListener("keydown", handleCityInput);
   // handle suchen btn:
   let suchen = document.querySelector("#suchenbtn");
-  console.log(suchen);
-  
+  // handle the range slider:
+  let range = document.querySelector("#slider");
+
+  range.addEventListener("mouseup", rangeSlide);
   suchen.addEventListener("click", handleCityInput);
   /*
   function removeDups(names) {
@@ -89,7 +92,7 @@ jQuery(function init($) {
       let img = clone.querySelector(".hotel-photo");
       // change the attributtes of the template:
       img.setAttribute("src", hotel.thumbnail);
-      
+
       // removed the hidden class from the clone:
       clone.classList.remove("hidden");
       hotelsSection.appendChild(clone);
@@ -99,7 +102,7 @@ jQuery(function init($) {
   }
 
   function handleCityInput(e) {
-    if (e.keyCode === 13 ) {
+    if (e.keyCode === 13) {
 
       //get city value:
       selectedCity = this.value; // === citiesInput.value === e.target
@@ -110,35 +113,20 @@ jQuery(function init($) {
 
     }
     else if (e.type == 'click') {
-    
+
       selectedCity = citiesInput.value
       // display hotels using getCityFromSelection
       let foundHotels = getCityFromSelection(selectedCity);
       displaySelectedHotels(foundHotels);
-    
+
     }
 
   }
 
-  let rangeSlider = function(){
-    let slider = $('.range-slider'),
-        range = $('.range-slider__range'),
-        value = $('.range-slider__value');
-      
-    slider.each(function(){
-  
-      value.each(function(){
-        let value = $(this).prev().attr('value');
-        $(this).html(value);
-      });
-  
-      range.on('input', function(){
-        $(this).next(value).html(this.value);
-      });
-    });
-  };
-  
-  rangeSlider();
+  function rangeSlide () {
+    let result = document.querySelector("#rangeres");
+    result.innerHTML = range.value + " EUR"
+  }
 
   // get hotel data:
   $.ajax(options)
