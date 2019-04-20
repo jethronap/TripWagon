@@ -6,13 +6,14 @@
 jQuery(function init($) {
 
   let options = {
-    url: "../data.json",
+    url: "./data.json",
     success: jsonHandler
   }
   let entries; // we define it here so it can be used from other methods
   let selectedCity;
   let selectedPrice;
-  
+  let selectedRating;
+
   // handle city input:
   let citiesInput = document.querySelector("#cities-list-choice");
   citiesInput.addEventListener("keydown", handleCityInput);
@@ -21,19 +22,10 @@ jQuery(function init($) {
   suchen.addEventListener("click", handleCityInput);
   // handle the range slider:
   let range = document.querySelector("#slider");
-  range.addEventListener("mouseup", rangeSlide);
-  
-  /*
-  function removeDups(names) {
-    let unique = {};
-    names.forEach(function (i) {
-      if (!unique[i]) {
-        unique[i] = true;
-      }
-    });
-    return Object.keys(unique);
-  }
-  */
+  range.addEventListener("mouseup", handleRangeSlide);
+  //handle property types:
+  let starMenu = document.querySelector("#menu-star");
+  starMenu.addEventListener("change", handleStarSelection);
 
   function addOptions(listOfCities) {
     // 1) Get DataList:
@@ -80,6 +72,11 @@ jQuery(function init($) {
     return hotel;
   }
 
+  function getHotelFromRating(selectedRating) {
+    let hotel = entries.filter(entry => entry.rating == selectedRating);
+    return hotel;
+  }
+
   function displaySelectedHotels(foundHotels) {
 
     // empty the hotel sections:
@@ -108,6 +105,8 @@ jQuery(function init($) {
   }
 
   function handleCityInput(e) {
+
+    // when enter in search bar is pressed:
     if (e.keyCode === 13) {
       //get city value:
       selectedCity = this.value; // === citiesInput.value === e.target
@@ -115,26 +114,51 @@ jQuery(function init($) {
       // display hotels using getCityFromSelection
       let foundHotels = getCityFromSelection(selectedCity);
       displaySelectedHotels(foundHotels);
-
     }
+    // when suchen btn is pressed:
     else if (e.type == 'click') {
 
       selectedCity = citiesInput.value
       // display hotels using getCityFromSelection
       let foundHotels = getCityFromSelection(selectedCity);
       displaySelectedHotels(foundHotels);
-
     }
-
   }
 
-  function rangeSlide () {
+  function handleRangeSlide() {
     let result = document.querySelector("#rangeres");
     result.innerHTML = range.value + " EUR"
     selectedPrice = range.value
-    
+
     let foundHotels = getHotelFromPrice(selectedPrice);
-    if(selectedPrice > 0){
+    if (selectedPrice > 0) {
+      displaySelectedHotels(foundHotels);
+    }
+  }
+
+  function handleStarSelection() {
+    if (starMenu.value === '0') {
+      let hotelsSection = document.querySelector(".hotels");
+      hotelsSection.innerHTML = "do you think we are that BASSE CLASSE 💩!?";
+    } else if (starMenu.value === '1') {
+      selectedRating = starMenu.value;
+      let foundHotels = getHotelFromRating(selectedRating);
+      displaySelectedHotels(foundHotels);
+    } else if (starMenu.value === '2') {
+      selectedRating = starMenu.value;
+      let foundHotels = getHotelFromRating(selectedRating);
+      displaySelectedHotels(foundHotels);
+    } else if (starMenu.value === '3') {
+      selectedRating = starMenu.value;
+      let foundHotels = getHotelFromRating(selectedRating);
+      displaySelectedHotels(foundHotels);
+    } else if (starMenu.value === '4') {
+      selectedRating = starMenu.value;
+      let foundHotels = getHotelFromRating(selectedRating);
+      displaySelectedHotels(foundHotels);
+    } else if (starMenu.value === '5') {
+      selectedRating = starMenu.value;
+      let foundHotels = getHotelFromRating(selectedRating);
       displaySelectedHotels(foundHotels);
     }
   }
@@ -142,3 +166,14 @@ jQuery(function init($) {
   // get hotel data:
   $.ajax(options)
 });
+/*
+  function removeDups(names) {
+    let unique = {};
+    names.forEach(function (i) {
+      if (!unique[i]) {
+        unique[i] = true;
+      }
+    });
+    return Object.keys(unique);
+  }
+  */
