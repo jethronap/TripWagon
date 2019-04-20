@@ -11,17 +11,18 @@ jQuery(function init($) {
   }
   let entries; // we define it here so it can be used from other methods
   let selectedCity;
+  let selectedPrice;
   
   // handle city input:
   let citiesInput = document.querySelector("#cities-list-choice");
   citiesInput.addEventListener("keydown", handleCityInput);
   // handle suchen btn:
   let suchen = document.querySelector("#suchenbtn");
+  suchen.addEventListener("click", handleCityInput);
   // handle the range slider:
   let range = document.querySelector("#slider");
-
   range.addEventListener("mouseup", rangeSlide);
-  suchen.addEventListener("click", handleCityInput);
+  
   /*
   function removeDups(names) {
     let unique = {};
@@ -74,6 +75,11 @@ jQuery(function init($) {
     return hotel;
   }
 
+  function getHotelFromPrice(selectedPrice) {
+    let hotel = entries.filter(entry => entry.price < selectedPrice);
+    return hotel;
+  }
+
   function displaySelectedHotels(foundHotels) {
 
     // empty the hotel sections:
@@ -103,7 +109,6 @@ jQuery(function init($) {
 
   function handleCityInput(e) {
     if (e.keyCode === 13) {
-
       //get city value:
       selectedCity = this.value; // === citiesInput.value === e.target
       selectedCity.toLowerCase().trim();
@@ -126,6 +131,12 @@ jQuery(function init($) {
   function rangeSlide () {
     let result = document.querySelector("#rangeres");
     result.innerHTML = range.value + " EUR"
+    selectedPrice = range.value
+    
+    let foundHotels = getHotelFromPrice(selectedPrice);
+    if(selectedPrice > 0){
+      displaySelectedHotels(foundHotels);
+    }
   }
 
   // get hotel data:
