@@ -1,4 +1,4 @@
-// \/same as jQuery(document).ready(init);
+// ↓ same as jQuery(document).ready(init);
 // jQuery(init); same as: the code below does not leave anything in the global scope:
 
 // App logic goes here:
@@ -14,7 +14,11 @@ jQuery(function init($) {
   // handle city input:
   let citiesInput = document.querySelector("#cities-list-choice");
   citiesInput.addEventListener("keydown", handleCityInput);
-
+  // handle suchen btn:
+  let suchen = document.querySelector("#suchenbtn");
+  console.log(suchen);
+  
+  suchen.addEventListener("click", handleCityInput);
   /*
   function removeDups(names) {
     let unique = {};
@@ -95,7 +99,7 @@ jQuery(function init($) {
   }
 
   function handleCityInput(e) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 ) {
 
       //get city value:
       selectedCity = this.value; // === citiesInput.value === e.target
@@ -104,6 +108,14 @@ jQuery(function init($) {
       let foundHotels = getCityFromSelection(selectedCity);
       displaySelectedHotels(foundHotels);
 
+    }
+    else if (e.type == 'click') {
+    
+      selectedCity = citiesInput.value
+      // display hotels using getCityFromSelection
+      let foundHotels = getCityFromSelection(selectedCity);
+      displaySelectedHotels(foundHotels);
+    
     }
 
   }

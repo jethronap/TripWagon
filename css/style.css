@@ -9,3 +9,7 @@
 .hidden {
     display: none;
 }
+
+#suchenbtn {
+    cursor: pointer;
+}
