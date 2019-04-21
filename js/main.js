@@ -29,6 +29,9 @@ jQuery(function init($) {
   // handle user rating:
   let userRatingMenu = document.querySelector("#menu-rating");
   userRatingMenu.addEventListener("change", handleUserRating);
+  // handle map:
+  let map = document.querySelector("#map");
+  map.addEventListener("click", handleMap);
 
   function addOptions(listOfCities) {
     // 1) Get DataList:
@@ -203,6 +206,29 @@ jQuery(function init($) {
     }
 
   }
+
+function openMap(options) {
+
+  if (options.zoom === undefined) {
+      options.zoom = 4;
+  };
+
+  if (options.target === undefined) {
+      options.target = 'map';
+  };
+  let map = new ol.Map({
+      target: options.target,
+      layers: [
+          new ol.layer.Tile({
+              source: new ol.source.OSM()
+          })
+      ],
+      view: new ol.View({
+          center: ol.proj.fromLonLat([options.lon, options.lat]),
+          zoom: options.zoom
+      })
+  });
+};
 
   // get hotel data:
   $.ajax(options)
