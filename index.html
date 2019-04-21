@@ -38,8 +38,8 @@
                     </div>
 
                     <!--DataList Example-->
-                    <input list="cities-list" id="cities-list-choice" class="form-control border-0 shadow-none"
-                        aria-label="Location">
+                    <input placeholder="enter city" list="cities-list" id="cities-list-choice"
+                        class="form-control border-0 shadow-none" aria-label="Location">
                     <datalist id="cities-list">
                         <!-- the options here are dynamically created -->
                     </datalist>
@@ -75,6 +75,7 @@
                 <input id="slider" type="range" value="600" min="500" max="2000">
                 <span id="rangeres">0</span>
             </div>
+            <!--Menu Star-->
             <div class="col-2 border">
                 <select id="menu-star">
                     <option selected>Property Types</option>
@@ -86,9 +87,10 @@
                     <option value="5">5-Stars</option>
                 </select>
             </div>
+            <!--Menu Rating-->
             <div class="col-2 border">
                 <select id="menu-rating">
-                    <option selected>GUest Rating</option>
+                    <option selected>Guest Rating</option>
                     <option value="2">0-2 Okay</option>
                     <option value="6">2-6 Fair</option>
                     <option value="7">6-7 Good</option>
@@ -96,6 +98,7 @@
                     <option value="10">8.5-10 Excellent</option>
                 </select>
             </div>
+            <!--Menu Location-->
             <div class="col-4 border">Location</div>
         </section>
 
@@ -106,33 +109,33 @@
         </section>
 
         <!-- HOTELS -->
-        <section class="row hotels border">
-        </section>
-        <!-- HOTEL -->
-        <div id="template" class="col-12 row hotel border m-0 p-0 hidden">
-            <div class="col-3 border px-0">
-                <i class="fas fa-grin-hearts position-absolute m-2 text-black-50"></i>
-                <img class="img-fluid hotel-photo"
-                    src="https://gdb.voanews.com/9A535399-CD2A-46E8-ADEB-651A0C2F3610_cx0_cy7_cw0_w1597_n_r1_st.jpg"
-                    alt="">
-            </div>
-            <div class="col-4 border">
-                <h3>Hotel Lancaster</h3>
-                <h5>Hotel</h5>
-                <span class="fa fa-star text-warning"></span>
-                <span class="fa fa-star text-warning"></span>
-                <span class="fa fa-star text-warning"></span>
-                <span class="fa fa-star text-muted"></span>
-                <span class="fa fa-star text-muted"></span>
-                <p>Paris, 0.2 miles to Notre Dame</p>
-                <p><span class="bg-success text-white p-1 rounded">8.8</span><strong> Excellent</strong>(1376
-                    reviews)</p>
-                <p>Excellent location (9.2/10)</p>
-            </div>
-            <div class="col-2 border">DEALS</div>
-            <div class="col-3 border">VIEW DEALS</div>
-        </div>
+        <section class="row hotels border"></section>
 
+            <!-- HOTEL -->
+            <div id="template" class="col-12 row hotel border m-0 p-0 hidden">
+                <div class="col-3 border px-0">
+                    <i class="fas fa-grin-hearts position-absolute m-2 text-black-50"></i>
+                    <img class="img-fluid hotel-photo"
+                        src="https://gdb.voanews.com/9A535399-CD2A-46E8-ADEB-651A0C2F3610_cx0_cy7_cw0_w1597_n_r1_st.jpg"
+                        alt="">
+                </div>
+                <div id="info" class="col-4 border">
+                    <h3><span id="hotel-name">Hotel Lancaster</span></h3>
+                    <h5>Hotel</h5>
+                    <span class="fa fa-star text-warning"></span>
+                    <span class="fa fa-star text-warning"></span>
+                    <span class="fa fa-star text-warning"></span>
+                    <span class="fa fa-star text-muted"></span>
+                    <span class="fa fa-star text-muted"></span>
+                    <p><span id="city-name">Paris</span>, 0.2 miles to Notre Dame</p>
+                    <p><span class="bg-success text-white p-1 rounded" id="rating-num">8.8</span><strong> Excellent</strong>(1376
+                        reviews)</p>
+                    <p>Excellent location (9.2/10)</p>
+                </div>
+                <div class="col-2 border">DEALS</div>
+                <div class="col-3 border">VIEW DEALS</div>
+            </div>
+        
     </div>
 
     <script src="js/main.js"></script>

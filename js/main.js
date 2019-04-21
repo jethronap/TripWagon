@@ -90,24 +90,31 @@ jQuery(function init($) {
     // empty the hotel sections:
     let hotelsSection = document.querySelector(".hotels");
     hotelsSection.innerHTML = "";
-
     //1. Loop found Hotels' list:
     foundHotels.map(displayHotel);
 
 
     function displayHotel(hotel) {
       //1.1 For every hotel obj -> get Template -> clone -> update content -> append to hotels
-      let template = document.querySelector('#template');
+      let template = document.querySelector("#template");
       // made a clone of the template
       let clone = template.cloneNode(true);
+      
       let img = clone.querySelector(".hotel-photo");
+      let name = clone.querySelector("#hotel-name");
+      let cityName = clone.querySelector("#city-name");
+      let ratingNumber = clone.querySelector("#rating-num");
       // change the attributtes of the template:
       img.setAttribute("src", hotel.thumbnail);
-
+      name.innerHTML = hotel.hotelName;
+      cityName.innerHTML = hotel.city;
+      ratingNumber.innerHTML = hotel.ratings.no;
+      
       // removed the hidden class from the clone:
       clone.classList.remove("hidden");
+      
       hotelsSection.appendChild(clone);
-
+      
     }
 
   }
@@ -172,9 +179,7 @@ jQuery(function init($) {
   }
 
   function handleUserRating() {
-    console.log("hi");
-    //console.log(foundHotels);
-
+    
     if (userRatingMenu.value <= 2) {
       selectedRating = userRatingMenu.value;
       let foundHotels = getHotelFromUserRating(selectedRating);
