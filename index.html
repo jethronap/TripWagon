@@ -19,6 +19,8 @@
         crossorigin="anonymous"></script>
     <!--OpenLayers: go to quickstart-->
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+        type="text/css">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -104,61 +106,70 @@
 
         <!-- MAP -->
         <section class="row map border">
-            <div class="col-md-1 border px-0" id="map">
-                    <i class="fas fa-globe position-absolute m-2"></i>
-                    
-            <img src="./images/hotel_photo.jpg" class="img-fluid" data-toggle="modal" data-target="#mapModalScrollable" alt="Maalik Opens The Gates Of Hell"></div>
+            <div class="col-1 border px-0" id="mapPhoto">
+                <i class="fas fa-globe position-absolute m-2"></i>
+
+                <img src="./images/hotel_photo.jpg" class="img-fluid" data-toggle="modal" data-target="#mapModal"
+                    alt="Maalik Opens The Gates Of Hell"></div>
             <div class="col"></div>
         </section>
 
         <!-- HOTELS -->
         <section class="row hotels border"></section>
 
-            <!-- HOTEL -->
-            <div id="template" class="col-12 row hotel border m-0 p-0 hidden">
-                <div class="col-3 border px-0">
-                    <i class="fas fa-grin-hearts position-absolute m-2 text-black-50"></i>
-                    <img class="img-fluid hotel-photo"
-                        src="https://gdb.voanews.com/9A535399-CD2A-46E8-ADEB-651A0C2F3610_cx0_cy7_cw0_w1597_n_r1_st.jpg"
-                        alt="">
-                </div>
-                <div id="info" class="col-4 border">
-                    <h3><span id="hotel-name">Hotel Lancaster</span></h3>
-                    <h5>Hotel</h5>
-                    <span class="fa fa-star text-warning"></span>
-                    <span class="fa fa-star text-warning"></span>
-                    <span class="fa fa-star text-warning"></span>
-                    <span class="fa fa-star text-muted"></span>
-                    <span class="fa fa-star text-muted"></span>
-                    <p><span id="city-name">Paris</span>, 0.2 miles to Notre Dame</p>
-                    <p><span class="bg-success text-white p-1 rounded" id="rating-num">8.8</span><strong> Excellent</strong>(1376
-                        reviews)</p>
-                    <p>Excellent location (9.2/10)</p>
-                </div>
-                <div class="col-2 border">DEALS</div>
-                <div class="col-3 border">VIEW DEALS</div>
+        <!-- HOTEL -->
+        <div id="template" class="col-12 row hotel border m-0 p-0 hidden">
+            <div class="col-3 border px-0">
+                <i class="fas fa-grin-hearts position-absolute m-2 text-black-50"></i>
+                <img class="img-fluid hotel-photo"
+                    src="https://gdb.voanews.com/9A535399-CD2A-46E8-ADEB-651A0C2F3610_cx0_cy7_cw0_w1597_n_r1_st.jpg"
+                    alt="">
             </div>
-        
+            <div id="info" class="col-4 border">
+                <h3><span id="hotel-name">Hotel Lancaster</span></h3>
+                <h5>Hotel</h5>
+                <span class="fa fa-star text-warning"></span>
+                <span class="fa fa-star text-warning"></span>
+                <span class="fa fa-star text-warning"></span>
+                <span class="fa fa-star text-muted"></span>
+                <span class="fa fa-star text-muted"></span>
+                <p><span id="city-name">Paris</span>, 0.2 miles to Notre Dame</p>
+                <p><span class="bg-success text-white p-1 rounded" id="rating-num">8.8</span><strong>
+                        Excellent</strong>(1376
+                    reviews)</p>
+                <p>Excellent location (9.2/10)</p>
+            </div>
+            <div class="col-2 border">DEALS</div>
+            <div class="col-3 border">VIEW DEALS</div>
+        </div>
+
     </div>
     <!-- Map Modal -->
-<div class="modal fade" id="mapModalScrollable" tabindex="-1" role="dialog" aria-labelledby="mapModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="mapModalScrollableTitle">Hotel Map</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mapModalTitle">Hotel Map</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="map-modal-body" id="mapBody">
+                    <!--This content will be dynamically loaded-->
+                    <iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="300"
+    height="200"
+    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d83998.94722687619!2d2.277019841665155!3d48.8588377391234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1554987763683!5m2!1sen!2sgr">
+</iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <!--This content will be dynamically loaded-->
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <script src="js/main.js"></script>
 </body>
 

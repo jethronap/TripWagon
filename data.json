@@ -25,7 +25,7 @@
                "text": "Excellent"
             },
             "mapurl": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d83998.94722687619!2d2.277019841665155!3d48.8588377391234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1554987763683!5m2!1sen!2sgr",
-            "__mapData": [ 48.872356, 2.303531 ],
+            "mapData": [ 48.872356, 2.303531 ],
             "filters": [
                {
                   "name": "Car Park"
@@ -56,7 +56,7 @@
                "text": "Excellent"
             },
             "mapurl": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d83998.94722687619!2d2.277019841665155!3d48.8588377391234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1554987763683!5m2!1sen!2sgr",
-            "__mapData": [ 48.869304, 2.300711 ],
+            "mapData": [ 48.869304, 2.300711 ],
             "filters": [
                {
                   "name": "Car Park"
@@ -81,7 +81,7 @@
                "text": "Excellent"
             },
             "mapurl": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d83998.94722687619!2d2.277019841665155!3d48.8588377391234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1554987763683!5m2!1sen!2sgr",
-            "__mapData": [ 43.100719, 5.889482 ],
+            "mapData": [ 43.100719, 5.889482 ],
             "filters": [
                {
                   "name": "Pool"
@@ -106,7 +106,7 @@
                "text": "Rather nice"
             },
             "mapurl": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d83998.94722687619!2d2.277019841665155!3d48.8588377391234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1554987763683!5m2!1sen!2sgr",
-            "__mapData": [  48.879133, 2325057 ],
+            "mapData": [  48.879133, 2325057 ],
             "filters": [
                {
                   "name": "Car Park"

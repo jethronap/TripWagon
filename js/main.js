@@ -30,8 +30,8 @@ jQuery(function init($) {
   let userRatingMenu = document.querySelector("#menu-rating");
   userRatingMenu.addEventListener("change", handleUserRating);
   // handle map:
-  let map = document.querySelector("#map");
-  map.addEventListener("click", handleMap);
+  //let map = document.querySelector("#mapPhoto");
+  //map.addEventListener("click", handleMap);
 
   function addOptions(listOfCities) {
     // 1) Get DataList:
@@ -67,6 +67,42 @@ jQuery(function init($) {
     addOptions(uniqueCities);
 
   }
+
+  function openMap(options) {
+
+    if (options.zoom === undefined) {
+        options.zoom = 4;
+    };
+  
+    if (options.target === undefined) {
+        options.target = 'mapModal';
+    };
+    let map = new ol.Map({
+        target: options.target,
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([options.lon, options.lat]),
+            zoom: options.zoom
+        })
+    });
+    // add marker
+    let marker = new ol.Feature({
+      geometry: new ol.geom.Point(
+        ol.proj.fromLonLat([options.lon, options.lat]) //[-74.006,40.7127]
+      ),  // Cordinates of New York's Town Hall
+    });
+    let vectorSource = new ol.source.Vector({
+      features: [marker]
+    });
+    let markerVectorLayer = new ol.layer.Vector({
+      source: vectorSource,
+    });
+    map.addLayer(markerVectorLayer);
+  };
 
   function getCityFromSelection(selectedCity) {
     let hotel = entries.filter(entry => entry.city.toLowerCase() === selectedCity.toLowerCase().trim());
@@ -207,28 +243,14 @@ jQuery(function init($) {
 
   }
 
-function openMap(options) {
-
-  if (options.zoom === undefined) {
-      options.zoom = 4;
-  };
-
-  if (options.target === undefined) {
-      options.target = 'map';
-  };
-  let map = new ol.Map({
-      target: options.target,
-      layers: [
-          new ol.layer.Tile({
-              source: new ol.source.OSM()
-          })
-      ],
-      view: new ol.View({
-          center: ol.proj.fromLonLat([options.lon, options.lat]),
-          zoom: options.zoom
-      })
-  });
-};
+function handleMap() {
+  console.log("hi");
+  //console.log(entries[0].mapData);
+  
+ document.querySelector("#mapBody").innerHTML = "";
+  
+  openMap( entries[0].mapData );
+}
 
   // get hotel data:
   $.ajax(options)
