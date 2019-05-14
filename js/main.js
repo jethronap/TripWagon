@@ -115,9 +115,9 @@ jQuery(function init($) {
     return hotel;
   }
 
-  function getHotelFromStar(selectedStar) {
-    let hotel = entries.filter(entry => entry.rating === selectedStar);
-    return hotel;
+  function getHotelsFromStar(starRating) {
+    let hotels = entries.filter(entry => entry.rating === starRating);
+    return hotels;
   }
 
   function displaySelectedHotels(foundHotels) {
@@ -186,15 +186,15 @@ jQuery(function init($) {
   }
 
   // Refactored according to KISS & DRY principles
-  function handleStarSelection(selectedStarRating) {
+  function handleStarSelection(starRating) {
 
-    if (selectedStarRating === '0') {
+    if (starRating === '0') {
 
       document.querySelector(".hotels").innerHTML = "do you think we are that BASSE CLASSE 💩!?";
 
     } else {
 
-      let foundHotels = getHotelFromStar(selectedStarRating);
+      let foundHotels = getHotelsFromStar(starRating);
       displaySelectedHotels(foundHotels);
 
     }
