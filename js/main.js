@@ -115,7 +115,7 @@ jQuery(function init($) {
   }
 
   function getHotelFromStar(selectedStar) {
-    let hotel = entries.filter(entry => entry.rating == selectedStar);
+    let hotel = entries.filter(entry => entry.rating === selectedStar);
     return hotel;
   }
 
@@ -170,7 +170,7 @@ jQuery(function init($) {
       displaySelectedHotels(foundHotels);
     }
     // when suchen btn is pressed:
-    else if (e.type == 'click') {
+    else if (e.type === 'click') {
 
       selectedCity = citiesInput.value
       // display hotels using getCityFromSelection
