@@ -116,7 +116,7 @@ jQuery(function init($) {
   }
 
   function getHotelsFromStar(starRating) {
-    let hotels = entries.filter(entry => entry.rating === starRating);
+    let hotels = entries.filter(entry => entry.rating == starRating);
     return hotels;
   }
 
@@ -193,7 +193,8 @@ jQuery(function init($) {
       document.querySelector(".hotels").innerHTML = "do you think we are that BASSE CLASSE 💩!?";
 
     } else {
-
+      console.log("hi");
+      
       let foundHotels = getHotelsFromStar(starRating);
       displaySelectedHotels(foundHotels);
 
