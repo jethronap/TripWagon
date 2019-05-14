@@ -25,7 +25,11 @@ jQuery(function init($) {
   range.addEventListener("change", handleRangeSlide);
   // handle property types:
   let starMenu = document.querySelector("#menu-star");
-  starMenu.addEventListener("change", handleStarSelection);
+  starMenu.addEventListener("change", function () {
+
+    handleStarSelection(starMenu.value);
+
+  });
   // handle user rating:
   let userRatingMenu = document.querySelector("#menu-rating");
   userRatingMenu.addEventListener("change", handleUserRating);
@@ -105,7 +109,6 @@ jQuery(function init($) {
   };
 
   function getCityFromSelection(selectedCity) {
-    selectedCity = selectedCity.toLowerCase().trim();
     let hotel = entries.filter(entry => entry.city.toLowerCase() === selectedCity);
     return hotel;
   }
@@ -190,31 +193,20 @@ jQuery(function init($) {
     }
   }
 
-  function handleStarSelection() {
-    if (starMenu.value === '0') {
-      let hotelsSection = document.querySelector(".hotels");
-      hotelsSection.innerHTML = "do you think we are that BASSE CLASSE 💩!?";
-    } else if (starMenu.value === '1') {
-      selectedStar = starMenu.value;
-      let foundHotels = getHotelFromStar(selectedStar);
+  // Refactored according to KISS & DRY principles
+  function handleStarSelection(selectedStarRating) {
+
+    if (selectedStarRating === '0') {
+
+      document.querySelector(".hotels").innerHTML = "do you think we are that BASSE CLASSE 💩!?";
+
+    } else {
+
+      let foundHotels = getHotelFromStar(selectedStarRating);
       displaySelectedHotels(foundHotels);
-    } else if (starMenu.value === '2') {
-      selectedStar = starMenu.value;
-      let foundHotels = getHotelFromStar(selectedStar);
-      displaySelectedHotels(foundHotels);
-    } else if (starMenu.value === '3') {
-      selectedStar = starMenu.value;
-      let foundHotels = getHotelFromStar(selectedStar);
-      displaySelectedHotels(foundHotels);
-    } else if (starMenu.value === '4') {
-      selectedStar = starMenu.value;
-      let foundHotels = getHotelFromStar(selectedStar);
-      displaySelectedHotels(foundHotels);
-    } else if (starMenu.value === '5') {
-      selectedStar = starMenu.value;
-      let foundHotels = getHotelFromStar(selectedStar);
-      displaySelectedHotels(foundHotels);
+
     }
+
   }
 
   function handleUserRating() {
