@@ -139,12 +139,14 @@ jQuery(function init($) {
       let name = clone.querySelector("#hotel-name");
       let cityName = clone.querySelector("#city-name");
       let ratingNumber = clone.querySelector("#rating-num");
+      let starColor = clone.querySelector("#stars-inner");
       // change the attributtes of the template:
       img.setAttribute("src", hotel.thumbnail);
       name.innerHTML = hotel.hotelName;
       cityName.innerHTML = hotel.city;
       ratingNumber.innerHTML = hotel.ratings.no;
-
+      // backticks help to change the width and keep the '%' sign. 
+      starColor.style.width = `${(hotel.rating / 5) * 100}%`;
       // removed the hidden class from the clone:
       clone.classList.remove("hidden");
 
@@ -194,7 +196,7 @@ jQuery(function init($) {
 
     } else {
       console.log("hi");
-      
+
       let foundHotels = getHotelsFromStar(starRating);
       displaySelectedHotels(foundHotels);
 

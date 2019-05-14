@@ -18,7 +18,34 @@
     cursor: pointer;
 }
 
-DIS.modal {
-    width: auto;
-    height: auto;
+
+/* 
+    this is the appropriate styling
+    for a div to fall on another.
+ */
+#stars {
+    position: absolute;
+}
+
+#stars-outer {
+    display: inline-block;
+    position: absolute;
+}
+   
+ #stars-outer::before {
+   content: "\f005 \f005 \f005 \f005 \f005";    
+}
+   
+#stars-inner {
+    position: relative;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0%;
+}
+   
+#stars-inner::before {
+   content: "\f005 \f005 \f005 \f005 \f005";
+   color: #f8ce0b;
 }
