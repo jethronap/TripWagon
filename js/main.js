@@ -71,23 +71,23 @@ jQuery(function init($) {
   function openMap(options) {
 
     if (options.zoom === undefined) {
-        options.zoom = 4;
+      options.zoom = 4;
     };
-  
+
     if (options.target === undefined) {
-        options.target = 'mapModal';
+      options.target = 'mapModal';
     };
     let map = new ol.Map({
-        target: options.target,
-        layers: [
-            new ol.layer.Tile({
-                source: new ol.source.OSM()
-            })
-        ],
-        view: new ol.View({
-            center: ol.proj.fromLonLat([options.lon, options.lat]),
-            zoom: options.zoom
+      target: options.target,
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
         })
+      ],
+      view: new ol.View({
+        center: ol.proj.fromLonLat([options.lon, options.lat]),
+        zoom: options.zoom
+      })
     });
     // add marker
     let marker = new ol.Feature({
@@ -139,7 +139,7 @@ jQuery(function init($) {
       let template = document.querySelector("#template");
       // made a clone of the template
       let clone = template.cloneNode(true);
-      
+
       let img = clone.querySelector(".hotel-photo");
       let name = clone.querySelector("#hotel-name");
       let cityName = clone.querySelector("#city-name");
@@ -149,23 +149,22 @@ jQuery(function init($) {
       name.innerHTML = hotel.hotelName;
       cityName.innerHTML = hotel.city;
       ratingNumber.innerHTML = hotel.ratings.no;
-      
+
       // removed the hidden class from the clone:
       clone.classList.remove("hidden");
-      
+
       hotelsSection.appendChild(clone);
-      
+
     }
 
   }
 
   function handleCityInput(e) {
 
-    // when enter in search bar is pressed:
-    if (e.keyCode === 13) {
+    // when enter sth in search bar or Search button get clicked:
+    if (e.keyCode === 13 || e.type === 'click') {
       //get city value:
-      selectedCity = this.value; // === citiesInput.value === e.target
-      selectedCity.toLowerCase().trim();
+      selectedCity = citiesInput.value.toLowerCase().trim(); // === citiesInput.value === e.target
       // display hotels using getCityFromSelection
       let foundHotels = getCityFromSelection(selectedCity);
       displaySelectedHotels(foundHotels);
@@ -219,7 +218,7 @@ jQuery(function init($) {
   }
 
   function handleUserRating() {
-    
+
     if (userRatingMenu.value <= 2) {
       selectedRating = userRatingMenu.value;
       let foundHotels = getHotelFromUserRating(selectedRating);
@@ -244,14 +243,14 @@ jQuery(function init($) {
 
   }
 
-function handleMap() {
-  console.log("hi");
-  //console.log(entries[0].mapData);
-  
- document.querySelector("#mapBody").innerHTML = "";
-  
-  openMap( entries[0].mapData );
-}
+  function handleMap() {
+    console.log("hi");
+    //console.log(entries[0].mapData);
+
+    document.querySelector("#mapBody").innerHTML = "";
+
+    openMap(entries[0].mapData);
+  }
 
   // get hotel data:
   $.ajax(options)

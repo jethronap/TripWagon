@@ -29,7 +29,7 @@
 </head>
 
 <body>
-    <div class="container mt-5" >
+    <div class="container mt-5">
         <!-- SUCHENBAR -->
         <section class="row searchbar bg-dark pt-3 rounded" role="search">
             <div class="col">
@@ -55,8 +55,10 @@
         <!-- BOOKING -->
         <section class="row booking border rounded">
             <!--Calendar for Checking-in & out-->
-            <div class="col-4 border rounded" id="checkin" aria-label="checkin" role="menu"><label for="startdate">Check-in:</label> <input id="startdate" class="rounded" type="date" /></div>
-            <div class="col-4 border rounded" id="checkout" aria-label="checkout" role="menu"><label for="enddate">Check-out:</label> <input id="enddate" class="rounded" type="date" /></div>
+            <div class="col-4 border rounded" id="checkin" aria-label="checkin" role="menu"><label
+                    for="startdate">Check-in:</label> <input id="startdate" class="rounded" type="date" /></div>
+            <div class="col-4 border rounded" id="checkout" aria-label="checkout" role="menu"><label
+                    for="enddate">Check-out:</label> <input id="enddate" class="rounded" type="date" /></div>
             <!--Dropdown menu for room types Call Jquery BEFORE Bootstrap for it to work-->
             <div class="dropdown col-4 border rounded" role="list">
                 <button class="btn btn-info dropdown-toggle" type="button" id="room-types" data-toggle="dropdown"
@@ -145,8 +147,7 @@
 
     </div>
     <!-- Map Modal -->
-    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModal"
-        aria-hidden="true">
+    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content" role="contentinfo">
                 <div class="modal-header" role="heading">
@@ -157,12 +158,9 @@
                 </div>
                 <div class="map-modal-body" id="mapBody" role="main">
                     <!--This content will be dynamically loaded-->
-                    <iframe id="inlineFrameExample"
-    title="Inline Frame Example"
-    width="300"
-    height="200"
-    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d83998.94722687619!2d2.277019841665155!3d48.8588377391234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1554987763683!5m2!1sen!2sgr">
-</iframe>
+                    <iframe id="inlineFrameExample" title="Inline Frame Example" width="300" height="200"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d83998.94722687619!2d2.277019841665155!3d48.8588377391234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1554987763683!5m2!1sen!2sgr">
+                    </iframe>
                 </div>
                 <div class="modal-footer" role="banner">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
