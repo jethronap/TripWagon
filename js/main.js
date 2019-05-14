@@ -105,7 +105,8 @@ jQuery(function init($) {
   };
 
   function getCityFromSelection(selectedCity) {
-    let hotel = entries.filter(entry => entry.city.toLowerCase() === selectedCity.toLowerCase().trim());
+    selectedCity = selectedCity.toLowerCase().trim();
+    let hotel = entries.filter(entry => entry.city.toLowerCase() === selectedCity);
     return hotel;
   }
 
