@@ -33,9 +33,6 @@ jQuery(function init($) {
   // handle user rating:
   let userRatingMenu = document.querySelector("#menu-rating");
   userRatingMenu.addEventListener("change", handleUserRating);
-  // handle map:
-  //let map = document.querySelector("#mapPhoto");
-  //map.addEventListener("click", handleMap);
 
   function addOptions(listOfCities) {
     // 1) Get DataList:
@@ -179,11 +176,11 @@ jQuery(function init($) {
 
   function handleRangeSlide() {
     let result = document.querySelector("#rangeres");
-    result.innerHTML = range.value + " EUR"
-    selectedPrice = range.value
+    selectedPrice = range.value;
 
-    let foundHotels = getHotelFromPrice(selectedPrice);
     if (selectedPrice > 0) {
+      result.innerHTML = selectedPrice + " EUR"
+      let foundHotels = getHotelFromPrice(selectedPrice);
       displaySelectedHotels(foundHotels);
     }
   }
