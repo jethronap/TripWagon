@@ -29,9 +29,9 @@
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5" >
         <!-- SUCHENBAR -->
-        <section class="row searchbar bg-dark pt-3 rounded">
+        <section class="row searchbar bg-dark pt-3 rounded" role="search">
             <div class="col">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -45,8 +45,8 @@
                     <datalist id="cities-list">
                         <!-- the options here are dynamically created -->
                     </datalist>
-                    <div class="input-group-append">
-                        <span id="suchenbtn" class="input-group-text bg-info text-white px-5 border-0">SUCHEN</span>
+                    <div class="input-group-append" role="search">
+                        <button id="suchenbtn" class="input-group-text bg-info text-white px-5 border-0">SUCHEN</button>
                     </div>
                 </div>
             </div>
@@ -55,15 +55,15 @@
         <!-- BOOKING -->
         <section class="row booking border rounded">
             <!--Calendar for Checking-in & out-->
-            <div class="col-4 border rounded" id="checkin">Check-in: <input class="rounded" type="date" /></div>
-            <div class="col-4 border rounded" id="checkout">Check-out: <input class="rounded" type="date" /></div>
+            <div class="col-4 border rounded" id="checkin" aria-label="checkin" role="menu"><label for="startdate">Check-in:</label> <input id="startdate" class="rounded" type="date" /></div>
+            <div class="col-4 border rounded" id="checkout" aria-label="checkout" role="menu"><label for="enddate">Check-out:</label> <input id="enddate" class="rounded" type="date" /></div>
             <!--Dropdown menu for room types Call Jquery BEFORE Bootstrap for it to work-->
-            <div class="dropdown col-4 border rounded">
+            <div class="dropdown col-4 border rounded" role="list">
                 <button class="btn btn-info dropdown-toggle" type="button" id="room-types" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Room Types
                 </button>
-                <div class="dropdown-menu" aria-labelledby="room-types">
+                <div class="dropdown-menu" aria-labelledby="room-types" role="list">
                     <a class="dropdown-item" href="#">Single Room</a>
                     <a class="dropdown-item" href="#">Double Room</a>
                     <a class="dropdown-item" href="#">Family Room</a>
@@ -73,12 +73,12 @@
 
         <!-- FEATURES -->
         <section class="row features border rounded">
-            <div class="col-4 border">Price:
-                <input id="slider" type="range" value="600" min="500" max="2000">
-                <span id="rangeres">0</span>
+            <div class="col-4 border" role="slider" aria-valuenow="600" aria-valuemin="500" aria-valuemax="2000">Price:
+                <input id="slider" type="range" aria-label="slider" value="600" min="500" max="2000">
+                <span id="rangeres" role="math">0</span>
             </div>
             <!--Menu Star-->
-            <div class="col-2 border">
+            <div class="col-2 border" role="list">
                 <select id="menu-star">
                     <option selected>Property Types</option>
                     <option value="0">0-Stars</option>
@@ -90,7 +90,7 @@
                 </select>
             </div>
             <!--Menu Rating-->
-            <div class="col-2 border">
+            <div class="col-2 border" role="list">
                 <select id="menu-rating">
                     <option selected>Guest Rating</option>
                     <option value="2">0-2 Okay</option>
@@ -101,61 +101,61 @@
                 </select>
             </div>
             <!--Menu Location-->
-            <div class="col-4 border">Location</div>
+            <div class="col-4 border" role="term">Location</div>
         </section>
 
         <!-- MAP -->
         <section class="row map border">
-            <div class="col-1 border px-0" id="mapPhoto">
+            <div class="col-1 border px-0" id="mapPhoto" role="img">
                 <i class="fas fa-globe position-absolute m-2"></i>
 
                 <img src="./images/hotel_photo.jpg" class="img-fluid" data-toggle="modal" data-target="#mapModal"
                     alt="Maalik Opens The Gates Of Hell"></div>
-            <div class="col"></div>
+            <div class="col" role="log"></div>
         </section>
 
         <!-- HOTELS -->
-        <section class="row hotels border"></section>
+        <section class="row hotels border" role="banner"></section>
 
         <!-- HOTEL -->
         <div id="template" class="col-12 row hotel border m-0 p-0 hidden">
-            <div class="col-3 border px-0">
+            <div class="col-3 border px-0" role="directory">
                 <i class="fas fa-grin-hearts position-absolute m-2 text-black-50"></i>
                 <img class="img-fluid hotel-photo"
                     src="https://gdb.voanews.com/9A535399-CD2A-46E8-ADEB-651A0C2F3610_cx0_cy7_cw0_w1597_n_r1_st.jpg"
                     alt="">
             </div>
-            <div id="info" class="col-4 border">
-                <h3><span id="hotel-name">Hotel Lancaster</span></h3>
+            <div id="info" class="col-4 border" role="directory">
+                <h3><span id="hotel-name" role="contentinfo">Hotel Lancaster</span></h3>
                 <h5>Hotel</h5>
-                <span class="fa fa-star text-warning"></span>
-                <span class="fa fa-star text-warning"></span>
-                <span class="fa fa-star text-warning"></span>
-                <span class="fa fa-star text-muted"></span>
-                <span class="fa fa-star text-muted"></span>
-                <p><span id="city-name">Paris</span>, 0.2 miles to Notre Dame</p>
-                <p><span class="bg-success text-white p-1 rounded" id="rating-num">8.8</span><strong>
+                <span class="fa fa-star text-warning" role="img"></span>
+                <span class="fa fa-star text-warning" role="img"></span>
+                <span class="fa fa-star text-warning" role="img"></span>
+                <span class="fa fa-star text-muted" role="img"></span>
+                <span class="fa fa-star text-muted" role="img"></span>
+                <p><span id="city-name" role="contentinfo">Paris</span>, 0.2 miles to Notre Dame</p>
+                <p><span class="bg-success text-white p-1 rounded" id="rating-num" role="contentinfo">8.8</span><strong>
                         Excellent</strong>(1376
                     reviews)</p>
                 <p>Excellent location (9.2/10)</p>
             </div>
-            <div class="col-2 border">DEALS</div>
-            <div class="col-3 border">VIEW DEALS</div>
+            <div class="col-2 border" role="contentinfo">DEALS</div>
+            <div class="col-3 border" role="contentinfo">VIEW DEALS</div>
         </div>
 
     </div>
     <!-- Map Modal -->
-    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel"
+    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModal"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-content" role="contentinfo">
+                <div class="modal-header" role="heading">
                     <h5 class="modal-title" id="mapModalTitle">Hotel Map</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true" role="tooltip">&times;</span>
                     </button>
                 </div>
-                <div class="map-modal-body" id="mapBody">
+                <div class="map-modal-body" id="mapBody" role="main">
                     <!--This content will be dynamically loaded-->
                     <iframe id="inlineFrameExample"
     title="Inline Frame Example"
@@ -164,7 +164,7 @@
     src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d83998.94722687619!2d2.277019841665155!3d48.8588377391234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1554987763683!5m2!1sen!2sgr">
 </iframe>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" role="banner">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
