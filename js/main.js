@@ -22,7 +22,7 @@ jQuery(function init($) {
   suchen.addEventListener("click", handleCityInput);
   // handle the range slider:
   let range = document.querySelector("#slider");
-  range.addEventListener("mouseup", handleRangeSlide);
+  range.addEventListener("change", handleRangeSlide);
   // handle property types:
   let starMenu = document.querySelector("#menu-star");
   starMenu.addEventListener("change", handleStarSelection);
