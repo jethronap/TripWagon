@@ -123,11 +123,6 @@ jQuery(function init($) {
     return hotel;
   }
 
-  function getHotelFromUserRating(selectedRating) {
-    let hotel = entries.filter(entry => entry.ratings.no < selectedRating);
-    return hotel;
-  }
-
   function displaySelectedHotels(foundHotels) {
 
     // empty the hotel sections:
@@ -209,29 +204,12 @@ jQuery(function init($) {
 
   }
 
+  // Refactored according to KISS and DRY principles:
   function handleUserRating() {
 
-    if (userRatingMenu.value <= 2) {
-      selectedRating = userRatingMenu.value;
-      let foundHotels = getHotelFromUserRating(selectedRating);
-      displaySelectedHotels(foundHotels);
-    } else if (userRatingMenu.value > 2 && userRatingMenu.value <= 6) {
-      selectedRating = userRatingMenu.value;
-      let foundHotels = getHotelFromUserRating(selectedRating);
-      displaySelectedHotels(foundHotels);
-    } else if (userRatingMenu.value > 6 && userRatingMenu.value <= 7) {
-      selectedRating = userRatingMenu.value;
-      let foundHotels = getHotelFromUserRating(selectedRating);
-      displaySelectedHotels(foundHotels);
-    } else if (userRatingMenu.value > 7 && userRatingMenu.value <= 8.5) {
-      selectedRating = userRatingMenu.value;
-      let foundHotels = getHotelFromUserRating(selectedRating);
-      displaySelectedHotels(foundHotels);
-    } else if (userRatingMenu.value > 8.5 && userRatingMenu.value <= 10) {
-      selectedRating = userRatingMenu.value;
-      let foundHotels = getHotelFromUserRating(selectedRating);
-      displaySelectedHotels(foundHotels);
-    }
+    selectedRating = userRatingMenu.value;
+    let foundHotels = entries.filter(entry => entry.ratings.no < selectedRating);
+    displaySelectedHotels(foundHotels);
 
   }
 
