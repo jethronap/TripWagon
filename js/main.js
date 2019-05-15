@@ -105,7 +105,7 @@ jQuery(function init($) {
     map.addLayer(markerVectorLayer);
   };
 
-  function getCityFromSelection(selectedCity) {
+  function getHotelFromCity(selectedCity) {
     let hotel = entries.filter(entry => entry.city.toLowerCase() === selectedCity);
     return hotel;
   }
@@ -163,7 +163,7 @@ jQuery(function init($) {
       //get city value:
       selectedCity = citiesInput.value.toLowerCase().trim(); // === citiesInput.value === e.target
       // display hotels using getCityFromSelection
-      let foundHotels = getCityFromSelection(selectedCity);
+      let foundHotels = getHotelFromCity(selectedCity);
       displaySelectedHotels(foundHotels);
     }
     // when suchen btn is pressed:
@@ -171,7 +171,7 @@ jQuery(function init($) {
 
       selectedCity = citiesInput.value
       // display hotels using getCityFromSelection
-      let foundHotels = getCityFromSelection(selectedCity);
+      let foundHotels = getHotelFromCity(selectedCity);
       displaySelectedHotels(foundHotels);
     }
   }
