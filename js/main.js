@@ -106,13 +106,13 @@ jQuery(function init($) {
   };
 
   function getHotelsFromCity(selectedCity) {
-    let hotel = entries.filter(entry => entry.city.toLowerCase() === selectedCity);
-    return hotel;
+    let hotels = entries.filter(entry => entry.city.toLowerCase() === selectedCity);
+    return hotels;
   }
 
   function getHotelsFromPrice(selectedPrice) {
-    let hotel = entries.filter(entry => entry.price < selectedPrice);
-    return hotel;
+    let hotels = entries.filter(entry => entry.price < selectedPrice);
+    return hotels;
   }
 
   function getHotelsFromStar(starRating) {
