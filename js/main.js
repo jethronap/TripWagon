@@ -60,7 +60,7 @@ jQuery(function init($) {
     }
 
     //let uniqueCity = removeDups(cities);
-    // use instead of removeDups (there is a problem with IE but it's ok!):
+    // use the following instead of removeDups (there is a problem with IE but it's ok!):
     let uniqueCities = [...new Set(cities)];
     // alphabetically ordered the array: (keep in mind that it changes the array)
     uniqueCities.sort();
@@ -145,7 +145,7 @@ jQuery(function init($) {
       name.innerHTML = hotel.hotelName;
       cityName.innerHTML = hotel.city;
       ratingNumber.innerHTML = hotel.ratings.no;
-      // backticks help to change the width and keep the '%' sign. 
+      // backticks help to change the width and keep the '%' sign.
       starColor.style.width = `${(hotel.rating / 5) * 100}%`;
       // removed the hidden class from the clone:
       clone.classList.remove("hidden");
@@ -162,7 +162,7 @@ jQuery(function init($) {
     if (e.keyCode === 13 || e.type === 'click') {
       //get city value:
       selectedCity = citiesInput.value.toLowerCase().trim(); // === citiesInput.value === e.target
-      // display hotels using getCityFromSelection
+      // display hotels using getHotelsFromCity
       let foundHotels = getHotelsFromCity(selectedCity);
       displaySelectedHotels(foundHotels);
     }
@@ -170,7 +170,7 @@ jQuery(function init($) {
     else if (e.type === 'click') {
 
       selectedCity = citiesInput.value
-      // display hotels using getCityFromSelection
+      // display hotels using getHotelsFromCity
       let foundHotels = getHotelsFromCity(selectedCity);
       displaySelectedHotels(foundHotels);
     }
